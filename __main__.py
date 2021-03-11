@@ -1,5 +1,5 @@
 """Allow cookiecutter to be executable from a checkout or zip file."""
-import runpy
+import runpy # use runpy
 
 
 if __name__ == "__main__":
