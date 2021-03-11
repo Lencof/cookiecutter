@@ -1,12 +1,17 @@
 #!/usr/bin/env python
 """cookiecutter distutils configuration."""
 from setuptools import setup
+import sys # use sys
+import os # use os
 
+# your name version
 version = "2.0.0"
 
+# open note
 with open('README.md', encoding='utf-8') as readme_file:
     readme = readme_file.read()
 
+    
 requirements = [
     'binaryornot>=0.4.4',
     'Jinja2<3.0.0',
@@ -17,6 +22,7 @@ requirements = [
     'requests>=2.23.0',
     'MarkupSafe<2.0.0',
 ]
+
 
 setup(
     name='cookiecutter',
