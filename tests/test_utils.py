@@ -1,13 +1,15 @@
 """Tests for `cookiecutter.utils` module."""
-import stat
-import sys
+import stat # use stat
+import sys # use sys
+import os # use os 
 from pathlib import Path
 
-import pytest
+import pytest # use pytest
 
 from cookiecutter import utils
 
 
+# create def make_readnoly(path):
 def make_readonly(path):
     """Change the access permissions to readonly for a given file."""
     mode = Path.stat(path).st_mode
@@ -52,6 +54,7 @@ def test_make_sure_path_exists(tmp_path):
     assert directory_to_create.exists()
 
 
+# create def test_make_sure_path_exists_correctly_hadle_os_error(mocker):    
 def test_make_sure_path_exists_correctly_handle_os_error(mocker):
     """Verify correct True/False response from `utils.make_sure_path_exists`.
 
@@ -59,6 +62,7 @@ def test_make_sure_path_exists_correctly_handle_os_error(mocker):
     Should return False if impossible to create directory (for example protected)
     """
 
+    # create def raiser(*args, **kwargs):
     def raiser(*args, **kwargs):
         raise OSError()
 
@@ -87,6 +91,7 @@ def test_work_in(tmp_path):
     assert cwd == Path.cwd()
 
 
+# create def test_prompt_should_ask_and_rm_repo_dir(mocker, tmp_path):
 def test_prompt_should_ask_and_rm_repo_dir(mocker, tmp_path):
     """In `prompt_and_delete()`, if the user agrees to delete/reclone the \
     repo, the repo should be deleted."""
@@ -102,7 +107,7 @@ def test_prompt_should_ask_and_rm_repo_dir(mocker, tmp_path):
     assert not repo_dir.exists()
     assert deleted
 
-
+# create def test_prompt_should_ask_and_exit_on_user_no_answer(mocker, tmp_path):
 def test_prompt_should_ask_and_exit_on_user_no_answer(mocker, tmp_path):
     """In `prompt_and_delete()`, if the user decline to delete/reclone the \
     repo, cookiecutter should exit."""
@@ -120,7 +125,7 @@ def test_prompt_should_ask_and_exit_on_user_no_answer(mocker, tmp_path):
     assert not deleted
     assert mock_sys_exit.called
 
-
+# create def test_prompt_should_ask_and_rm_repo_file(mocker, tmp_path):
 def test_prompt_should_ask_and_rm_repo_file(mocker, tmp_path):
     """In `prompt_and_delete()`, if the user agrees to delete/reclone a \
     repo file, the repo should be deleted."""
@@ -137,7 +142,7 @@ def test_prompt_should_ask_and_rm_repo_file(mocker, tmp_path):
     assert not repo_file.exists()
     assert deleted
 
-
+# create def test_prompt_should_ask_and_keep_repo_on_no_reuse(mocker, tmp_path):
 def test_prompt_should_ask_and_keep_repo_on_no_reuse(mocker, tmp_path):
     """In `prompt_and_delete()`, if the user wants to keep their old \
     cloned template repo, it should not be deleted."""
@@ -153,7 +158,7 @@ def test_prompt_should_ask_and_keep_repo_on_no_reuse(mocker, tmp_path):
     assert mock_read_user.called
     assert repo_dir.exists()
 
-
+# create def test_prompt_should_ask_and_keep_repo_on_reuse(mocker, tmp_path):
 def test_prompt_should_ask_and_keep_repo_on_reuse(mocker, tmp_path):
     """In `prompt_and_delete()`, if the user wants to keep their old \
     cloned template repo, it should not be deleted."""
@@ -176,7 +181,7 @@ def test_prompt_should_ask_and_keep_repo_on_reuse(mocker, tmp_path):
     assert repo_dir.exists()
     assert not deleted
 
-
+# create def test_prompt_should_not_ask_if_no_input_and_rm_repo_dir(mocker, tmp_path):
 def test_prompt_should_not_ask_if_no_input_and_rm_repo_dir(mocker, tmp_path):
     """Prompt should not ask if no input and rm dir.
 
@@ -195,7 +200,7 @@ def test_prompt_should_not_ask_if_no_input_and_rm_repo_dir(mocker, tmp_path):
     assert not repo_dir.exists()
     assert deleted
 
-
+# create def test_prompt_should_not_ask_if_no_input_and_rm_repo_file(mocker, tmp_path):
 def test_prompt_should_not_ask_if_no_input_and_rm_repo_file(mocker, tmp_path):
     """Prompt should not ask if no input and rm file.
 
