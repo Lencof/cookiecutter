@@ -1,5 +1,6 @@
 """Tests for cookiecutter's output directory customization feature."""
-import pytest
+import pytest # use pytest
+import sys # use sys
 
 from cookiecutter import main
 
